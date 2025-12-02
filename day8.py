@@ -16,3 +16,12 @@ with open ("input8.txt") as f:
     print(f"reslut: {str_cnt - str_cnt_esc}")
 
 
+lines=None
+with open("input8.txt")as f:
+    lines = f.read().split()
+code = sum([len(x) for x in lines])
+memory = sum([len(x.encode("utf-8").decode('unicode-escape'))-2 for x in lines])
+part2= sum([len(re.sub('"', '"\"', repr(x))) for x in lines])
+
+print(code-memory)
+print(part2 - code)
